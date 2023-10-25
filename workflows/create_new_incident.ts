@@ -56,6 +56,7 @@ const issueFormData = CreateNewIncidentWorkflow.addStep(
         name: "short_description",
         title: "Please Provide a Short Description",
         description: "Short Description of the Incident",
+        type: Schema.types.string,
       }],
       required: ["user", "urgency", "short_description"],
     },
