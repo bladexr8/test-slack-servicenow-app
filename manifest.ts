@@ -13,6 +13,6 @@ export default Manifest({
   icon: "assets/default_new_app_icon.png",
   functions: [CreateIncidentDefinition],
   workflows: [CreateNewIncidentWorkflow],
-  outgoingDomains: ["service-now.com"],
+  outgoingDomains: ["dev111686.service-now.com"],
   botScopes: ["commands", "chat:write", "chat:write.public"],
 });
