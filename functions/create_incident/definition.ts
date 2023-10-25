@@ -10,9 +10,9 @@ const CreateIncidentDefinition = DefineFunction({
   source_file: "functions/create_incident/mod.ts",
   input_parameters: {
     properties: {
-      caller: {
+      user: {
         type: Schema.types.string,
-        description: "Caller lodging Incident",
+        description: "User lodging Incident",
       },
       urgency: {
         type: Schema.types.string,
@@ -23,7 +23,7 @@ const CreateIncidentDefinition = DefineFunction({
         description: "Short Description of Incident",
       },
     },
-    required: ["caller", "short_description"],
+    required: ["user", "short_description"],
   },
   output_parameters: {
     properties: {
