@@ -1,5 +1,5 @@
 SERVICENOW_API_URL=<e.g. https://dev999787.service-now.com/api/now/v1>
 SERVICENOW_TABLE_API_URL=<e.g. https://dev999787.service-now.com/api/now/v1/table>
-SERVICENOW_INCIDENT_TABLE_URL=<e.g. https://dev999787.service-now.com/api/now/v1/table/incident>
+SERVICENOW_INCIDENT_TABLE_API_URL=<e.g. https://dev999787.service-now.com/api/now/v1/table/incident>
 SERVICENOW_USERNAME=<username here>
 SERVICENOW_PASSWORD=<password here>
