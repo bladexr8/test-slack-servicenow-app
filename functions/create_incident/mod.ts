@@ -68,19 +68,24 @@ export default SlackFunction(
       }).then((res: Response) => {
         const response = res;
         console.log("COMPLETED Service Now Request...");
+        console.log(`Status = ${response.status}`);
         console.log(response);
-        if (res.status === 201) {
+        return response;
+        /*if (res.status === 201) {
           return res.json();
         } else {
           console.log("***ERROR CREATING INCIDENT***");
           console.error(JSON.stringify(res.json()));
           throw new Error(`${res.status}: ${res.statusText}`);
-        }
+        }*/
       });
+
+      console.log("INCIDENT RESPONSE...");
+      console.log(JSON.stringify(incident));
 
       return {
         outputs: {
-          IncidentNumber: incident.number,
+          IncidentNumber: "1",
         },
       };
     } catch (err) {
