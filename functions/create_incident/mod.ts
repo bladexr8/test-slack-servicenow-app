@@ -5,14 +5,34 @@ export default SlackFunction(
   CreateIncidentDefinition,
   async ({ inputs, env }) => {
     try {
+      console.log(
+        `Credentials = ${env.SERVICENOW_USERNAME}:${env.SERVICENOW_PASSWORD}`,
+      );
+      console.log(
+        `Credentials = ${
+          btoa(env.SERVICENOW_USERNAME + ":" + env.SERVICENOW_PASSWORD)
+        }`,
+      );
+
       // contruct request headers
-      const headers = {
+      /*const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
         Authorization: `Basic ${
           btoa(env.SERVICENOW_USERNAME + ":" + env.SERVICENOW_PASSWORD)
         }`,
+      };*/
+
+      const headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Basic ${
+          btoa(env.SERVICENOW_USERNAME + ":" + "hRr8n$9lL+MU")
+        }`,
       };
+
+      console.log("Request Headers...");
+      console.log(headers);
 
       // parse inputs
       const { user, urgency, short_description } = inputs;
@@ -46,8 +66,16 @@ export default SlackFunction(
         headers,
         body,
       }).then((res: Response) => {
-        if (res.status === 201) return res.json();
-        else throw new Error(`${res.status}: ${res.statusText}`);
+        const response = res;
+        console.log("COMPLETED Service Now Request...");
+        console.log(response);
+        if (res.status === 201) {
+          return res.json();
+        } else {
+          console.log("***ERROR CREATING INCIDENT***");
+          console.error(JSON.stringify(res.json()));
+          throw new Error(`${res.status}: ${res.statusText}`);
+        }
       });
 
       return {
