@@ -15,19 +15,11 @@ export default SlackFunction(
       );
 
       // contruct request headers
-      /*const headers = {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Basic ${
-          btoa(env.SERVICENOW_USERNAME + ":" + env.SERVICENOW_PASSWORD)
-        }`,
-      };*/
-
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
         Authorization: `Basic ${
-          btoa(env.SERVICENOW_USERNAME + ":" + "hRr8n$9lL+MU")
+          btoa(env.SERVICENOW_USERNAME + ":" + env.SERVICENOW_PASSWORD)
         }`,
       };
 
@@ -66,18 +58,18 @@ export default SlackFunction(
         headers,
         body,
       }).then((res: Response) => {
-        const response = res;
-        console.log("COMPLETED Service Now Request...");
-        console.log(`Status = ${response.status}`);
-        console.log(response);
-        return response;
-        /*if (res.status === 201) {
+        //const response = res;
+        //console.log("COMPLETED Service Now Request...");
+        //console.log(`Status = ${response.status}`);
+        //console.log(response);
+        //return response;
+        if (res.status === 201) {
           return res.json();
         } else {
-          console.log("***ERROR CREATING INCIDENT***");
-          console.error(JSON.stringify(res.json()));
+          //console.log("***ERROR CREATING INCIDENT***");
+          //console.error(JSON.stringify(res.json()));
           throw new Error(`${res.status}: ${res.statusText}`);
-        }*/
+        }
       });
 
       console.log("INCIDENT RESPONSE...");
@@ -85,7 +77,7 @@ export default SlackFunction(
 
       return {
         outputs: {
-          IncidentNumber: "1",
+          IncidentNumber: `${incident.result.number}`,
         },
       };
     } catch (err) {
